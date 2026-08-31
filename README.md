@@ -1,164 +1,164 @@
 # Kannamma - Maternal Health Voice Guardian
 
-> "A mother doesn't need an app — she just needs a voice that remembers."
+<div align="center">
 
-Kannamma is an IVR-based voice guardian system that calls expecting mothers weekly in Tamil/Telugu, reminds them about checkups and tablets, and connects them to ASHA workers when they need help.
+![GitHub repo](https://img.shields.io/badge/GitHub-kannamma--vision2047hackathon---181717?logo=github)
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python)
+![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
+![Twilio](https://img.shields.io/badge/Twilio-IVR-ef3b2d?logo=twilio)
+![Hackathon](https://img.shields.io/badge/Track-Vision2047-8a2be2)
 
-## 🎯 Features
+</div>
 
-- **IVR Voice Calls** - Automated weekly reminders in Tamil/Telugu
-- **ASHA Dashboard** - React-based dashboard for ASHA workers
-- **Health Tracking** - Period tracking, PCOS management, post-pregnancy care
-- **Appointment Management** - Schedule and track ANC appointments
-- **PHC Stock Management** - Track medicine and vaccine inventory
-- **Flagged Mothers** - Automatic flagging when help is needed
-- **Call Logs** - Complete history of all IVR calls
+> “A mother doesn’t need an app — she just needs a voice that remembers.”
 
-## 🚀 Quick Start
+Kannamma is a maternal health support platform that helps expecting mothers and ASHA workers stay connected through AI-assisted voice reminders, health tracking, and care coordination. The system uses an IVR-based calling flow to deliver weekly reminders in Tamil/Telugu, surface health risks, and connect mothers to the right care support quickly.
 
-### Option 1: Automated Setup (Recommended)
+## Overview
 
-**Windows (Command Prompt):**
-```bash
-cd backend
-run.bat
+Kannamma combines:
+
+- an automated voice-first reminder system for pregnancy care
+- a dashboard for ASHA workers and healthcare staff
+- structured health tracking for mothers
+- appointment and medicine coordination
+- PHC inventory visibility and follow-up management
+
+This project is designed for rural maternal care scenarios where timely voice reminders and low-friction communication can reduce missed checkups and improve support access.
+
+## Key Features
+
+- IVR voice calls in Tamil/Telugu for reminders and follow-ups
+- Weekly health and medication check-ins for pregnant mothers
+- ASHA worker dashboard for mother tracking and outreach
+- Appointment and visit tracking
+- PHC stock and vaccine monitoring
+- Flagged mother workflow for urgent follow-up
+- Call logs and engagement history
+
+## Solution Architecture
+
+```text
+Mother / Community
+       |
+       v
+IVR + Twilio Integration
+       |
+       v
+Flask Backend API
+       |
+       +--> SQLite/PostgreSQL data layer
+       +--> ASHA dashboard and workflow APIs
+       +--> Health, appointment, and stock services
+       |
+       v
+React + TypeScript Frontend
 ```
 
-**Windows (PowerShell):**
+## Quick Start
+
+### Backend
+
+```bash
+cd backend
+python setup.py
+python app.py
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Windows helpers
+
 ```powershell
 cd backend
-.\run.bat
-# OR
-.\run.ps1
+.
+un.bat
+# or
+.
+un.ps1
 ```
 
-**Mac/Linux:**
-```bash
-cd backend
-chmod +x run.sh
-./run.sh
+## Default Access
+
+After running the backend setup, the system includes a sample ASHA login:
+
+- ASHA ID: `ASHA001`
+- Password: `password123`
+
+## Project Structure
+
+```text
+kannamma/
+├── backend/                 # Flask API service
+├── frontend/                # React + TypeScript dashboard
+├── database/                # SQL schema and migration support
+├── README.md                # Project overview
+├── PROJECT_STRUCTURE.md     # Repo structure details
+├── START_HERE.md            # Launch guide
+├── API_STATUS.md            # API status notes
+├── TESTING_GUIDE.md         # Testing instructions
+├── TWILIO_SETUP.md          # Twilio setup docs
+├── NGROK_SETUP.md           # Local webhook setup
+├── start-demo.bat           # Demo launch helper
+└── test_api.ps1             # API testing helper
 ```
 
-### Option 2: Manual Setup
+## Documentation
 
-See [SETUP_AND_RUN.md](./SETUP_AND_RUN.md) for detailed step-by-step instructions.
+- [START_HERE.md](./START_HERE.md) — recommended starting point
+- [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) — file organization
+- [TESTING_GUIDE.md](./TESTING_GUIDE.md) — validation workflow
+- [TWILIO_SETUP.md](./TWILIO_SETUP.md) — Twilio configuration
+- [NGROK_SETUP.md](./NGROK_SETUP.md) — local webhook testing
+- [backend/README.md](./backend/README.md) — backend API documentation
 
-### Quick Commands
+## Tech Stack
 
-```bash
-# Backend
-cd backend
-python setup.py      # Initialize database
-python app.py        # Start server (http://localhost:5000)
+### Backend
+- Flask
+- Python
+- SQLAlchemy
+- Flask-JWT-Extended
+- Twilio API
 
-# Frontend
-cd frontend
-npm install          # Install dependencies
-npm run dev          # Start dev server (http://localhost:5173)
-```
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
 
-## 📁 Project Structure
+## Use Cases
 
-```
-kannama/
-├── backend/          # Flask API backend
-├── frontend/         # React dashboard
-├── database/         # Database schemas
-└── docs/            # Documentation
-```
+1. Weekly maternal health reminders delivered by voice
+2. ANC visit tracking and follow-up reminders
+3. ASHA worker visibility into high-risk mothers
+4. PHC medicine and vaccine stock tracking
+5. Faster escalation for mothers needing intervention
 
-See [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for complete structure.
-
-## 🔌 API Endpoints
-
-- **Auth:** `/api/auth/login`, `/api/auth/register`
-- **Mothers:** `/api/mothers`, `/api/mothers/<id>`
-- **IVR:** `/api/ivr/webhook`, `/api/ivr/initiate-call`
-- **Health:** `/api/health/records`, `/api/health/period-tracker`
-- **PHC:** `/api/phc/stock`
-- **Appointments:** `/api/appointments`
-
-See [backend/README.md](./backend/README.md) for complete API documentation.
-
-## 🗄️ Database
-
-The system uses SQLAlchemy ORM and supports:
-- **SQLite** (default for development)
-- **PostgreSQL** (recommended for production)
-
-Database is automatically created on first run via `setup.py`.
-
-## 🔐 Default Login
-
-After running `setup.py`, use these credentials:
-
-- **ASHA ID:** `ASHA001`
-- **Password:** `password123`
-
-## 📞 IVR Integration
-
-Kannamma integrates with Twilio/Exotel for voice calls:
-
-1. Sign up for Twilio account
-2. Get Account SID and Auth Token
-3. Buy a phone number
-4. Add credentials to `backend/.env`
-5. Set webhook URL: `https://your-domain.com/api/ivr/webhook`
-
-See [CONNECTION_GUIDE.md](./CONNECTION_GUIDE.md) for detailed IVR setup.
-
-## 🛠️ Tech Stack
-
-**Backend:**
-- Flask (Python web framework)
-- SQLAlchemy (ORM)
-- Flask-JWT-Extended (Authentication)
-- Twilio (IVR integration)
-
-**Frontend:**
-- React + TypeScript
-- Vite (Build tool)
-- Tailwind CSS (Styling)
-
-## 📚 Documentation
-
-- [SETUP_AND_RUN.md](./SETUP_AND_RUN.md) - Complete setup guide
-- [CONNECTION_GUIDE.md](./CONNECTION_GUIDE.md) - IVR-React connection
-- [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) - File structure
-- [backend/README.md](./backend/README.md) - API documentation
-- [QUICK_START.md](./QUICK_START.md) - Quick reference
-
-## 🎯 Use Cases
-
-1. **Weekly Reminders** - Automated calls to remind about medications
-2. **Appointment Confirmations** - Voice reminders for upcoming ANC visits
-3. **Help Detection** - Automatic flagging when mother needs assistance
-4. **Health Tracking** - Period tracking, PCOS management, post-pregnancy care
-5. **Stock Alerts** - Notify when PHC stock is low
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+3. Implement your improvement
+4. Open a pull request
 
-## 📝 License
+## License
 
-This project is part of a hackathon submission.
+This project is developed as part of a hackathon initiative for maternal health innovation.
 
-## 🆘 Support
+## Acknowledgements
 
-For issues or questions:
-1. Check [SETUP_AND_RUN.md](./SETUP_AND_RUN.md) troubleshooting section
-2. Review [CONNECTION_GUIDE.md](./CONNECTION_GUIDE.md) for integration help
-3. Check backend logs for error messages
-
-## 🎉 Acknowledgments
-
-Built for maternal health care in rural Tamil Nadu, India.
+Built to support community health workers and mothers in underserved areas, especially in rural and semi-urban maternal care settings.
 
 ---
 
-**Made with ❤️ for mothers and ASHA workers**
+Made with ❤️ for mothers, ASHA workers, and healthier communities.
 
